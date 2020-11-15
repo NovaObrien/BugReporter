@@ -1,0 +1,11 @@
+
+  {
+    "name": "bugreport-secondmidterm",
+    "version": "1.0.0",
+    "scripts": {
+      "setup": "npm run setup:client && npm run setup:server",
+      "setup:client": "cd bugreport-secondmidterm.client && npm i",
+      "setup:server": "cd bugreport-secondmidterm.server && npm i"
+    }
+  }
+  
