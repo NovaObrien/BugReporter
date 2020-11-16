@@ -1,11 +1,19 @@
 <template>
-  <div class="BugComponent bg-primary row border border-dark">
+  <div class="BugComponent row border border-dark bg-primary">
     <div class="col">
       <div class="row">
         {{ bug.title }}
       </div>
       <div class="row">
-        Reported By: {{ bug.reportedBy }}
+        Reported By: {{ bug.createdBy }}
+      </div>
+      <div class="row">
+        Status: {{ bug.status }}
+      </div>
+      <div class="row">
+        <button class="btn btn-warning" @click="openBug(bug)">
+          Notes
+        </button>
       </div>
     </div>
   </div>
@@ -13,6 +21,9 @@
 
 <script>
 import { computed } from 'vue'
+// import { bugService } from '../services/bugService'
+import router from '../router'
+
 export default {
   name: 'BugComponent',
   props: {
@@ -25,7 +36,11 @@ export default {
   },
   setup(props) {
     return {
-      bug: computed(() => props.bugProp)
+      bug: computed(() => props.bugProp),
+      openBug(bug) {
+        router.push({ name: 'Bug', params: { id: bug._id } })
+        // bugService.openBug(bug)
+      }
     }
   },
   components: {}

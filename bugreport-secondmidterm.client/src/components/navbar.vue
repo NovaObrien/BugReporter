@@ -6,7 +6,6 @@
       </div>
     </router-link>
     <create-bug-component />
-    <i class="fas fa-bug"></i>
     <button
       class="navbar-toggler"
       type="button"

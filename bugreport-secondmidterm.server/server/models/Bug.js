@@ -6,19 +6,20 @@ const Bug = new Schema({
     type: Boolean,
     default: false
   },
+  status: {
+    type: String,
+    default: 'Open'
+  },
   description: {
     type: String,
     default: 'No Description Available'
   },
+  createdBy: {
+    type: String
+  },
   title: {
     type: String,
     required: true
-  },
-  reportedBy: {
-    type: String,
-    required: true,
-    ref: 'Profile'
-
   },
   creatorId: {
     type: String,
@@ -40,5 +41,11 @@ Bug.virtual('creator', {
   foreignField: '_id',
   justOne: true
 })
+// Bug.virtual('reported', {
+//   localField: 'reportedBy',
+//   ref: 'Profile',
+//   foreignField: 'name',
+//   justOne: true
+// })
 
 export default Bug

@@ -11,5 +11,23 @@ class BugService {
       logger.error(error)
     }
   }
+
+  async createBug(newBug) {
+    try {
+      const res = await api.post('api/bug', newBug)
+      AppState.bugs = [...AppState.bugs, res.data]
+      logger.log(res.data)
+    } catch (error) {
+      logger.error(error)
+    }
+  }
+
+  async openBug(bug) {
+    try {
+
+    } catch (error) {
+      logger.error(error)
+    }
+  }
 }
 export const bugService = new BugService()
