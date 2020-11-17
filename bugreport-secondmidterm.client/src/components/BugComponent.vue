@@ -1,19 +1,39 @@
 <template>
-  <div class="BugComponent row border border-dark bg-primary">
+  <div class="BugComponent row border border-dark " :class=" bug.closed == true ? 'bg-success': 'bg-primary'">
     <div class="col">
+      <input
+        class="mb-3 bug-title form-control row border-dark font-weight-bolder font-italic"
+        :class=" bug.closed == true ? 'bg-success': 'bg-primary'"
+        type="text"
+        v-model="bug.title"
+        @change="editBug(bug)"
+      />
+      <!-- {{ bug.title }} -->
+
       <div class="row">
-        {{ bug.title }}
+        <div class="col">
+          Reported By: {{ bug.createdBy }}
+        </div>
+        <div class="col">
+          Last edited on: {{ bug.updatedAt }}
+        </div>
       </div>
       <div class="row">
-        Reported By: {{ bug.createdBy }}
+        <div class="col">
+          Status: {{ bug.status }}
+        </div>
       </div>
       <div class="row">
-        Status: {{ bug.status }}
-      </div>
-      <div class="row">
-        <button class="btn btn-warning" @click="openBug(bug)">
-          Notes
-        </button>
+        <div class="col">
+          <button class="btn btn-warning" @click="openBug(bug)">
+            Notes
+          </button>
+        </div>
+        <div class="col">
+          <button class="btn btn-danger" @click="setCloseStatus(bug)">
+            Close/Unclose
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -21,7 +41,7 @@
 
 <script>
 import { computed } from 'vue'
-// import { bugService } from '../services/bugService'
+import { bugService } from '../services/bugService'
 import router from '../router'
 
 export default {
@@ -39,7 +59,13 @@ export default {
       bug: computed(() => props.bugProp),
       openBug(bug) {
         router.push({ name: 'Bug', params: { id: bug._id } })
-        // bugService.openBug(bug)
+        bugService.openBug(bug)
+      },
+      editBug: (bug) => {
+        bugService.editBug(bug)
+      },
+      setCloseStatus(bug) {
+        bugService.setCloseStatus(bug)
       }
     }
   },

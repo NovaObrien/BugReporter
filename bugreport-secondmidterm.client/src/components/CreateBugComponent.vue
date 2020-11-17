@@ -6,7 +6,7 @@
       data-toggle="modal"
       data-target="#createBug"
     >
-      <i class="fa fa-bug" aria-hidden="true"></i>
+      <i class="fa fa-bug text-danger" aria-hidden="true"></i>
     </button>
     <!-- Modal -->
     <div

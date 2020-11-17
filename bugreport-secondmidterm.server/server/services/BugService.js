@@ -18,6 +18,14 @@ class BugService {
     }
   }
 
+  async getBugById(bugId) {
+    try {
+      return await dbContext.Bug.findById(bugId)
+    } catch (error) {
+      throw new BadRequest(error)
+    }
+  }
+
   async editBugById(bugId, reqBody, currentUserId) {
     try {
       if (currentUserId !== reqBody.creatorId) {

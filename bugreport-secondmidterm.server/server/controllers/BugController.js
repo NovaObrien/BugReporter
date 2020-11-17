@@ -9,6 +9,7 @@ export class BugController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAllBugs)
+      .get('/:bugId', this.getBugById)
       .post('', this.postBug)
       .put('/:bugId', this.editBugById)
       // .put('/:bugId', this.closeBugById)
@@ -30,6 +31,14 @@ export class BugController extends BaseController {
     } catch (error) {
       logger.error('Failed to Get All Bugs on Backend Possible Error in Service')
       next(error)
+    }
+  }
+
+  async getBugById(req, res, next) {
+    try {
+      res.send(await bugService.getBugById(req.params.bugId))
+    } catch (error) {
+      logger.error('Failed to get Bug by Id on Backend Possible Error in Service')
     }
   }
 

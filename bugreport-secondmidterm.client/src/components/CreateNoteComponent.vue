@@ -3,7 +3,7 @@
     <!-- Button trigger modal -->
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-primary text-danger"
       data-toggle="modal"
       data-target="#createNote"
     >
@@ -32,7 +32,7 @@
                 aria-label="Close"
               >
                 <span aria-hidden="true">
-                  <i class="fa fa-trash" aria-hidden="true"></i>
+                  <i class="fa fa-trash text-danger" aria-hidden="true"></i>
                 </span>
               </button>
             </div>

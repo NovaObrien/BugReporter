@@ -1,9 +1,9 @@
 <template>
-  <div class="NoteComponent col-3 p-3 bg-light card">
+  <div class="NoteComponent col-12 p-3 bg-light">
     <div class="row p-2 bg-light mb-3">
       {{ note.reportedBy }}
       <textarea
-        class="col-12 rounded note-description border-0 bg-info text-light"
+        class="col-12 rounded note-description border-0 bg-warning text-light"
         rows="5"
         v-model="note.content"
         @change="editNote(note)"
@@ -11,7 +11,7 @@
 
       <div class="col-2 text-center">
         <span @click="deleteNote(note)">
-          <i class="fa fa-trash" aria-hidden="true"></i>
+          <i class="fa fa-trash text-danger" aria-hidden="true"></i>
         </span>
       </div>
     </div>
